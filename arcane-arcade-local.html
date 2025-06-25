@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>The Bringer of Ruin</title>
+  <title>Arcane - Arcade</title>
   <style>    
     :root {
       --ratio: calc(636 / 1055);
@@ -44,13 +44,13 @@
   </div>
 
   <!-- Unity Loader Script -->
-  <script src="https://assetcdn.rgpub.io/public/live/bundle-offload/286e4bcb-4d1d-403c-869f-0c3c8cd547de/67f4776ead2bc100089d8ea1/Comic/WebGLBuild/Build/WebGLBuild.loader.js"></script>
+  <script src="./Arcane/WebGLBuild/Build/WebGLBuild.loader.js"></script>
   <script>
     createUnityInstance(document.querySelector("#unity-canvas"), {
-      dataUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/286e4bcb-4d1d-403c-869f-0c3c8cd547de/67f4776ead2bc100089d8ea1/Comic/WebGLBuild/Build/WebGLBuild.data.gz",
-      frameworkUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/286e4bcb-4d1d-403c-869f-0c3c8cd547de/67f4776ead2bc100089d8ea1/Comic/WebGLBuild/Build/WebGLBuild.framework.js.gz",
-      codeUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/286e4bcb-4d1d-403c-869f-0c3c8cd547de/67f4776ead2bc100089d8ea1/Comic/WebGLBuild/Build/WebGLBuild.wasm.gz",
-      streamingAssetsUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/286e4bcb-4d1d-403c-869f-0c3c8cd547de/67f4776ead2bc100089d8ea1/Comic/WebGLBuild/StreamingAssets",
+      dataUrl: "./Arcane/WebGLBuild/Build/WebGLBuild.data",
+      frameworkUrl: "./Arcane/WebGLBuild/Build/WebGLBuild.framework.js",
+      codeUrl: "./Arcane/WebGLBuild/Build/WebGLBuild.wasm",
+      streamingAssetsUrl: "./Arcane/WebGLBuild/StreamingAssets",
       companyName: "",
       productName: "",
       productVersion: "0.1"
@@ -59,7 +59,7 @@
       
       // Send telemetry messages
       unityInstance.SendMessage("ClientBridge", "SetTelemetryUrl", "");
-      unityInstance.SendMessage("MotionComic","StartChapter",1);
+      unityInstance.SendMessage("SceneLoader","ChangeSceneById",1);
     }).catch(function (message) {
       console.error(message);
     });

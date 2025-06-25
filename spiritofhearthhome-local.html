@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>The Bringer of Ruin</title>
+  <title>The Spirit of Hearth-Home</title>
   <style>    
     :root {
       --ratio: calc(636 / 1055);
@@ -44,13 +44,13 @@
   </div>
 
   <!-- Unity Loader Script -->
-  <script src="https://assetcdn.rgpub.io/public/live/bundle-offload/286e4bcb-4d1d-403c-869f-0c3c8cd547de/67f4776ead2bc100089d8ea1/Comic/WebGLBuild/Build/WebGLBuild.loader.js"></script>
+  <script src="./Aurora/WebGLBuild/Build/WebGLBuild.loader.js"></script>
   <script>
     createUnityInstance(document.querySelector("#unity-canvas"), {
-      dataUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/286e4bcb-4d1d-403c-869f-0c3c8cd547de/67f4776ead2bc100089d8ea1/Comic/WebGLBuild/Build/WebGLBuild.data.gz",
-      frameworkUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/286e4bcb-4d1d-403c-869f-0c3c8cd547de/67f4776ead2bc100089d8ea1/Comic/WebGLBuild/Build/WebGLBuild.framework.js.gz",
-      codeUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/286e4bcb-4d1d-403c-869f-0c3c8cd547de/67f4776ead2bc100089d8ea1/Comic/WebGLBuild/Build/WebGLBuild.wasm.gz",
-      streamingAssetsUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/286e4bcb-4d1d-403c-869f-0c3c8cd547de/67f4776ead2bc100089d8ea1/Comic/WebGLBuild/StreamingAssets",
+      dataUrl: "./Aurora/WebGLBuild/Build/WebGLBuild.data",
+      frameworkUrl: "./Aurora/WebGLBuild/Build/WebGLBuild.framework.js",
+      codeUrl: "./Aurora/WebGLBuild/Build/WebGLBuild.wasm",
+      streamingAssetsUrl: "./Aurora/WebGLBuild/StreamingAssets",
       companyName: "",
       productName: "",
       productVersion: "0.1"
@@ -59,7 +59,15 @@
       
       // Send telemetry messages
       unityInstance.SendMessage("ClientBridge", "SetTelemetryUrl", "");
-      unityInstance.SendMessage("MotionComic","StartChapter",1);
+	  // Load cached game data if available
+      var cachedData = localStorage.getItem("hearthHomeData");
+      if (cachedData) {
+        console.log("Loading cached game data:");
+        unityInstance.SendMessage("ClientBridge", "SetHubData", cachedData);
+        console.log(cachedData);
+      } else {
+        console.log("No cached game data found.");
+      }
     }).catch(function (message) {
       console.error(message);
     });
