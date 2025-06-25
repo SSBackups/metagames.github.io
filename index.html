@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metagame Archive</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0A1428;
+            color: #e0e0e0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #091428;
+			border-radius: 10px;
+			border: 1px solid #444;
+			box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .section h2 {
+            color: #f0f0f0;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap; /* Allows items to wrap to the next line */
+            gap: 20px; /* Space between items */
+            justify-content: center; /* Center items if they don't fill the row */
+        }
+
+        .gallery-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden; /* Ensures image corners are rounded if image is direct child */
+            background-color: #1E282D;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: calc(33.333% - 20px); /* Adjust for 3 items per row, considering gap */
+            min-width: 250px; /* Minimum width before wrapping */
+            text-align: center; /* Centers the image if its display is inline-block */
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item a {
+            display: block; /* Makes the whole area clickable */
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .gallery-item img {
+            width: 100%; /* Makes image responsive within its container */
+            height: auto; /* Maintains aspect ratio */
+            display: block; /* Removes extra space below image */
+        }
+
+        .gallery-item .caption {
+            padding: 10px;
+            font-size: 0.9em;
+            color: #F0E6D2;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 992px) {
+            .gallery-item {
+                width: calc(50% - 20px); /* 2 items per row */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-item {
+                width: 100%; /* 1 item per row */
+            }
+            .section h2 {
+                font-size: 1.5em;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section id="spirit-blossom" class="section">
+            <h2>Spirit Blossom Beyond</h2>
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <a href="pilgrimage.html">
+                        <img src="Previews/Pilgrimage.jpg">
+                        <div class="caption">Pilgrimage Motion Comic</div>
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="thedevotedshrinemaiden.html">
+                        <img src="Previews/DevotedShrineMaiden.jpg">
+                        <div class="caption">The Devoted Shrine Maiden Motion Comic</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section id="noxus" class="section">
+            <h2>Welcome to Noxus</h2>
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <a href="thebringerofruin.html">
+                        <img src="Previews/BringerofRuin.jpg">
+                        <div class="caption">The Bringer of Ruin Motion Comic</div>
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="thefourthprinciple.html">
+                        <img src="Previews/FourthPrinciple.jpg">
+                        <div class="caption">The Fourth Principle Motion Comic</div>
+                    </a>
+                </div>
+				<div class="gallery-item">
+                    <a href="demonshand.html">
+                        <img src="Previews/DemonsHand.jpg">
+                        <div class="caption">The Demons Hand Minigame</div>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+        <section id="arcane" class="section">
+            <h2>Jinx Fixes Everything</h2>
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <a href="arcane-arcade.html">
+                        <img src="Previews/jinx-minigame-1.jpg">
+                        <div class="caption">Part 1 - Arcade</div>
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="arcane-lastdrop.html">
+                        <img src="Previews/jinx-minigame-2.jpg">
+                        <div class="caption">Part 2 - The Last Drop</div>
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="arcane-firelight.html">
+                        <img src="Previews/jinx-minigame-3.jpg">
+                        <div class="caption">Part 3 - Firelight Base</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
