@@ -1,0 +1,29 @@
+:root {
+  --ratio: calc(636 / 1055);
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #231F20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Fixed-size container that preserves your aspect ratio */
+#unity-wrapper {
+  width: 100vw;
+  max-height: 100vh;
+  max-width: calc(100vh / var(--ratio));
+  background: #231F20;
+  position: relative;
+}
+/* Canvas fills the wrapper exactly */
+#unity-canvas {
+  width: 100%;
+  height: 100%;
+  background: #231F20;
+}

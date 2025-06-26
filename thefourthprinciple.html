@@ -3,47 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>The Fourth Principle</title>
-  <style>    
-    :root {
-      --ratio: calc(636 / 1055);
-    }
-
-    html, body {
-      height: 100%;
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background: #231F20;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    /* Fixed-size container that preserves your aspect ratio */
-    #unity-wrapper {
-      width: 100vw;
-      max-height: 100vh;
-      max-width: calc(100vh / var(--ratio));
-      background: #231F20;
-      position: relative;
-    }
-    /* Canvas fills the wrapper exactly */
-    #unity-canvas {
-      width: 100%;
-      height: 100%;
-      background: #231F20;
-    }
-  </style>
+  <link rel="stylesheet" href="unityplayer.css">
 </head>
-
 <body>
-  <!-- Wrap the canvas in a container that defines the aspect ratio -->
   <div id="unity-wrapper">
     <canvas id="unity-canvas" width="1055" height="636" tabindex="-1"></canvas>
   </div>
-
-  <!-- Unity Loader Script -->
   <script src="./WelcomeToNoxus/Comic/WebGLBuild/Build/WebGLBuild.loader.js"></script>
   <script>
     createUnityInstance(document.querySelector("#unity-canvas"), {
@@ -51,13 +20,11 @@
       frameworkUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/286e4bcb-4d1d-403c-869f-0c3c8cd547de/67f4776ead2bc100089d8ea1/Comic/WebGLBuild/Build/WebGLBuild.framework.js.gz",
       codeUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/286e4bcb-4d1d-403c-869f-0c3c8cd547de/67f4776ead2bc100089d8ea1/Comic/WebGLBuild/Build/WebGLBuild.wasm.gz",
       streamingAssetsUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/286e4bcb-4d1d-403c-869f-0c3c8cd547de/67f4776ead2bc100089d8ea1/Comic/WebGLBuild/StreamingAssets",
-      companyName: "",
-      productName: "",
+      companyName: "A",
+      productName: "B",
       productVersion: "0.1"
     }).then(function (unityInstance) {
       var originalSendMessage = unityInstance.SendMessage;
-      
-      // Send telemetry messages
       unityInstance.SendMessage("ClientBridge", "SetTelemetryUrl", "");
       unityInstance.SendMessage("MotionComic","StartChapter",2);
     }).catch(function (message) {

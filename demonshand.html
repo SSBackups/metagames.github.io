@@ -3,47 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>The Demons Hand</title>
-  <style>    
-    :root {
-      --ratio: calc(636 / 1055);
-    }
-
-    html, body {
-      height: 100%;
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background: #231F20;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    /* Fixed-size container that preserves your aspect ratio */
-    #unity-wrapper {
-      width: 100vw;
-      max-height: 100vh;
-      max-width: calc(100vh / var(--ratio));
-      background: #231F20;
-      position: relative;
-    }
-    /* Canvas fills the wrapper exactly */
-    #unity-canvas {
-      width: 100%;
-      height: 100%;
-      background: #231F20;
-    }
-  </style>
+  <link rel="stylesheet" href="unityplayer.css">
 </head>
-
 <body>
-  <!-- Wrap the canvas in a container that defines the aspect ratio -->
   <div id="unity-wrapper">
     <canvas id="unity-canvas" width="1055" height="636" tabindex="-1"></canvas>
   </div>
-
-  <!-- Unity Loader Script -->
   <script src="./WelcomeToNoxus/DemonsHand/WebGLBuild/Build/WebGLBuild.loader.js"></script>
   <script>
     createUnityInstance(document.querySelector("#unity-canvas"), {
@@ -51,19 +20,15 @@
       frameworkUrl: "./WelcomeToNoxus/DemonsHand/WebGLBuild/Build/WebGLBuild.framework.js",
       codeUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/286e4bcb-4d1d-403c-869f-0c3c8cd547de/67f4776ead2bc100089d8ea1/WebGLBuild/Build/WebGLBuild.wasm.gz",
       streamingAssetsUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/286e4bcb-4d1d-403c-869f-0c3c8cd547de/67f4776ead2bc100089d8ea1/WebGLBuild/StreamingAssets",
-      companyName: "",
-      productName: "",
+      companyName: "A",
+      productName: "B",
       productVersion: "0.1"
     }).then(function (unityInstance) {
-      var originalSendMessage = unityInstance.SendMessage;
-      
-      // Send telemetry messages
+      var originalSendMessage = unityInstance.SendMessage;      
       unityInstance.SendMessage("ClientBridge", "SetTelemetryUrl", "");
       unityInstance.SendMessage("ClientBridge", "SetEventEndDate", "2099-04-29T06:59:00.000Z");
-
       _FoundationGetPendingRewards(unityInstance)
       _SetMissions(unityInstance)
-
       // Load cached game data if available
       var cachedData = localStorage.getItem("bobaMinigameData");
       if (cachedData) {
@@ -76,7 +41,6 @@
     }).catch(function (message) {
       console.error(message);
     });
-
     function _FoundationGetPendingRewards(unityInstance) {
       fetch("./WelcomeToNoxus/DemonsHand/grants.json").then(response => response.json()).then(json => {
         let simplifiedRewardData = json.map(reward => {
@@ -91,7 +55,6 @@
         unityInstance.SendMessage("ClientBridge", "SetRewardGroups", JSON.stringify(simplifiedRewardData));
       });
     }
-
     function _SetMissions(unityInstance) {
       fetch("./WelcomeToNoxus/DemonsHand/missions.json").then(response => response.json()).then(json => {
         const filtered = json
@@ -100,16 +63,13 @@
             internalName: item.internalName,
             status: item.status
           }));
-
         console.log(filtered);
-
         let simplifiedRewardData = json.map(mission => {
           return {
             internalName: mission.internalName,
             status: mission.status
           };
-        });
-        
+        });        
         unityInstance.SendMessage("ClientBridge", "SetMissions", JSON.stringify(simplifiedRewardData));
       });
     }
