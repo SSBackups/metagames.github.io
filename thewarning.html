@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>The Truth</title>
+  <title>The Warning</title>
   <link rel="stylesheet" href="unityplayer.css">
 </head>
 <body>
@@ -26,7 +26,7 @@
     }).then(function (unityInstance) {
       var originalSendMessage = unityInstance.SendMessage;
       unityInstance.SendMessage("ClientBridge", "SetTelemetryUrl", "");
-      unityInstance.SendMessage("MotionComic","StartChapter",1);
+      unityInstance.SendMessage("MotionComic","StartChapter",2);
     }).catch(function (message) {
       console.error(message);
     });
