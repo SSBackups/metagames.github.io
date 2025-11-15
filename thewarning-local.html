@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-us" style="height: 100%; width: 100%;">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>The Warning</title>
+  <link rel="stylesheet" href="unityplayer.css">
+</head>
+<body>
+  <div id="unity-wrapper">
+    <canvas id="unity-canvas" width="1055" height="636" tabindex="-1"></canvas>
+  </div>
+  <script src="./TrialsOfTwilight/Comic/WebGLBuild/Build/WebGLBuild.loader.js"></script>
+  <script>
+    createUnityInstance(document.querySelector("#unity-canvas"), {
+      dataUrl: "./TrialsOfTwilight/Comic/WebGLBuild/Build/WebGLBuild.data",
+      frameworkUrl: "./TrialsOfTwilight/Comic/WebGLBuild/Build/WebGLBuild.framework.js",
+      codeUrl: "./TrialsOfTwilight/Comic/WebGLBuild/Build/WebGLBuild.wasm",
+      streamingAssetsUrl: "./TrialsOfTwilight/Comic/WebGLBuild/StreamingAssets",
+      companyName: "A",
+      productName: "B",
+      productVersion: "0.1"
+    }).then(function (unityInstance) {
+      var originalSendMessage = unityInstance.SendMessage;
+      unityInstance.SendMessage("ClientBridge", "SetTelemetryUrl", "");
+      unityInstance.SendMessage("MotionComic","StartChapter",2);
+    }).catch(function (message) {
+      console.error(message);
+    });
+  </script>
+</body>
+</html>
