@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-us" style="height: 100%; width: 100%;">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Demacia Rising</title>
+  <link rel="stylesheet" href="unityplayer.css">
+</head>
+<body>
+  <div id="unity-wrapper">
+    <canvas id="unity-canvas" width="1055" height="720" tabindex="-1"></canvas>
+  </div>
+  <script src="./ForDemacia/DemaciaRising/Build/WebGLBuild.loader.js"></script>
+  <script>
+    createUnityInstance(document.querySelector("#unity-canvas"), {
+      //Riot didn't gz compress the data/wasm for this upload
+      dataUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/f09b0338-4e0a-48e9-bf7b-2cab4a57c25d/69f127f0211f91000793391a/WebGLBuild/Build/WebGLBuild.data",
+      frameworkUrl: "./ForDemacia/DemaciaRising/Build/WebGLBuild.framework.js",
+      codeUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/f09b0338-4e0a-48e9-bf7b-2cab4a57c25d/69f127f0211f91000793391a/WebGLBuild/Build/WebGLBuild.wasm",
+      streamingAssetsUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/f09b0338-4e0a-48e9-bf7b-2cab4a57c25d/69f127f0211f91000793391a/WebGLBuild/StreamingAssets",
+      companyName: "A",
+      productName: "B",
+      productVersion: "0.1"
+    }).then(function (unityInstance) {
+      var originalSendMessage = unityInstance.SendMessage;
+	  unityInstance.SendMessage("ClientBridge", "SetClientBuildVersion", "{\"buildVersion\": \"16.8\"}");
+	  //Unlocks battlepass
+	  unityInstance.SendMessage("ClientBridge", "SetEventPassOwnership", "{\"inventoryType\":\"EVENT_PASS\",\"inventory\":[{\"itemId\":55,\"owned\":true,\"ownershipType\":\"OWNED\",\"uuid\":\"756efc26-d0fe-4bea-9128-628759e92b56\"}]}");
+	  unityInstance.SendMessage("ClientBridge", "SetEventPassOwnership", "{\"inventoryType\":\"EVENT_PASS\",\"inventory\":[{\"itemId\":56,\"owned\":true,\"ownershipType\":\"OWNED\",\"uuid\":\"283d4263-226e-490b-908f-aea353d0454a\"}]}");
+    }).catch(function (message) {
+      console.error(message);
+    });
+  </script>
+</body>
+</html>
