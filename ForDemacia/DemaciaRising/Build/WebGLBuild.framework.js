@@ -6104,6 +6104,11 @@ var unityFramework = (() => {
 					//Load cached data on login event
 					var cachedData = localStorage.getItem("demaciaRisingMinigameData") || '{}';
 					eventDataObj = JSON.parse(cachedData);
+					//Unsure if version setting matters
+					SendMessage("ClientBridge", "SetClientBuildVersion", "{\"buildVersion\": \"16.8\"}");
+					//Unlocks battlepass
+					SendMessage("ClientBridge", "SetEventPassOwnership", "{\"inventoryType\":\"EVENT_PASS\",\"inventory\":[{\"itemId\":55,\"owned\":true,\"ownershipType\":\"OWNED\",\"uuid\":\"756efc26-d0fe-4bea-9128-628759e92b56\"}]}");
+					SendMessage("ClientBridge", "SetEventPassOwnership", "{\"inventoryType\":\"EVENT_PASS\",\"inventory\":[{\"itemId\":56,\"owned\":true,\"ownershipType\":\"OWNED\",\"uuid\":\"283d4263-226e-490b-908f-aea353d0454a\"}]}");
                 }
 				else if(convertedEventName == "play_turn")
 				{

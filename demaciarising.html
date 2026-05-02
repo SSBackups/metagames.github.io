@@ -7,7 +7,34 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>Demacia Rising</title>
-  <link rel="stylesheet" href="unityplayer.css">
+  <style>
+  :root {
+    --ratio: calc(720 / 1055);
+  }
+  html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #231F20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #unity-wrapper {
+    width: 100vw;
+    max-height: 100vh;
+    max-width: calc(100vh / var(--ratio));
+    background: #231F20;
+    position: relative;
+  }
+  #unity-canvas {
+    width: 100%;
+    height: 100%;
+    background: #231F20;
+  }
+  </style>
 </head>
 <body>
   <div id="unity-wrapper">
@@ -25,11 +52,6 @@
       productName: "B",
       productVersion: "0.1"
     }).then(function (unityInstance) {
-      var originalSendMessage = unityInstance.SendMessage;
-	  unityInstance.SendMessage("ClientBridge", "SetClientBuildVersion", "{\"buildVersion\": \"16.8\"}");
-	  //Unlocks battlepass
-	  unityInstance.SendMessage("ClientBridge", "SetEventPassOwnership", "{\"inventoryType\":\"EVENT_PASS\",\"inventory\":[{\"itemId\":55,\"owned\":true,\"ownershipType\":\"OWNED\",\"uuid\":\"756efc26-d0fe-4bea-9128-628759e92b56\"}]}");
-	  unityInstance.SendMessage("ClientBridge", "SetEventPassOwnership", "{\"inventoryType\":\"EVENT_PASS\",\"inventory\":[{\"itemId\":56,\"owned\":true,\"ownershipType\":\"OWNED\",\"uuid\":\"283d4263-226e-490b-908f-aea353d0454a\"}]}");
     }).catch(function (message) {
       console.error(message);
     });
