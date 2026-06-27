@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-us" style="height: 100%; width: 100%;">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>What We Face</title>
+  <link rel="stylesheet" href="unityplayer.css">
+</head>
+<body>
+  <div id="unity-wrapper">
+    <canvas id="unity-canvas" width="1055" height="636" tabindex="-1"></canvas>
+  </div>
+  <script src="./Pandemonium/WhatWeFear/Build/WebGLBuild.loader.js"></script>
+  <script>
+    createUnityInstance(document.querySelector("#unity-canvas"), {
+      dataUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/09648726-b12b-45db-94b8-2af261880ea4/6a3bf24f15638800085f684a/comics-pipeline-2/WebGLBuild/Build/WebGLBuild.data.gz",
+      frameworkUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/09648726-b12b-45db-94b8-2af261880ea4/6a3bf24f15638800085f684a/comics-pipeline-2/WebGLBuild/Build/WebGLBuild.framework.js.gz",
+      codeUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/09648726-b12b-45db-94b8-2af261880ea4/6a3bf24f15638800085f684a/comics-pipeline-2/WebGLBuild/Build/WebGLBuild.wasm.gz",
+      streamingAssetsUrl: "https://assetcdn.rgpub.io/public/live/bundle-offload/09648726-b12b-45db-94b8-2af261880ea4/6a3bf24f15638800085f684a/comics-pipeline-2/WebGLBuild/StreamingAssets",
+      companyName: "A",
+      productName: "B",
+      productVersion: "0.1"
+    }).then(function (unityInstance) {
+      var originalSendMessage = unityInstance.SendMessage;
+      unityInstance.SendMessage("ClientBridge", "SetTelemetryUrl", "");
+      unityInstance.SendMessage("MotionComic","StartChapter",1);
+    }).catch(function (message) {
+      console.error(message);
+    });
+  </script>
+</body>
+</html>
